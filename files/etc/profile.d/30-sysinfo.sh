@@ -16,7 +16,7 @@ SHOW_IP_PATTERN="^[ewr].*|^br.*|^lt.*|^umts.*"
 }
 
 # find the partition where root is located
-ROOT_PTNAME="$(df -h /boot | tail -n1 | awk '{print $1}' | awk -F '/' '{print $3}')"
+ROOT_PTNAME="$(df -h /mnt/SDCard1 | tail -n1 | awk '{print $1}' | awk -F '/' '{print $3}')"
 if [[ -n "${ROOT_PTNAME}" ]]; then
 	# find the disk where the partition is located, only supports mmcblk?p? sd?? hd?? vd?? and other formats
 	case "${ROOT_PTNAME}" in
@@ -91,7 +91,7 @@ function storage_info() {
 	root_total="$(awk '/\// {print $(NF-4)}' <<<${RootInfo})"
 
 	# storage info
-	BootInfo="$(df -h /boot)"
+	BootInfo="$(df -h /mnt/SDCard1)"
 	boot_usage="$(awk '/\// {print $(NF-1)}' <<<${BootInfo} | sed 's/%//g')"
 	boot_total="$(awk '/\// {print $(NF-4)}' <<<${BootInfo})"
 
