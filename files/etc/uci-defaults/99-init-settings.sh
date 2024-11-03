@@ -12,6 +12,7 @@ echo '*/30 * * * * sync && echo 3 > /proc/sys/vm/drop_caches' >> /etc/crontabs/r
 /etc/init.d/cron restart
 
 chmod +x /etc/profile.d/30-sysinfo.sh
+chmod +x /usr/bin/cpustat
 sed -i 's|/bin/ash|/bin/bash|g' /etc/passwd
 
 exit 0
